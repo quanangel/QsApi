@@ -1,0 +1,23 @@
+{
+    "name": "nowqs/api",
+    "description": "it's php extend",
+    "license": "Apache-2.0",
+    "type": "library",
+    "require": {
+        "php": ">=7.0.0",
+        "nowqs/log": "dev-master",
+        "nowqs/redis": "dev-master"
+    },
+    "authors": [
+        {
+            "name": "Qs",
+            "email": "quanangel@outlook.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "Qs\\api\\": "src/"
+        }
+    }
+}
