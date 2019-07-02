@@ -76,7 +76,7 @@ class Token {
             // 删除已有TOKEN
             $this->redis->rm($userId);
             // 添加新的TOKEN
-            $this->redis->set($userId, $newToken, 0);
+            $this->redis->set($userId, $newToken, []);
             $newToken = base64_encode($newToken . '_' . $userId . '_' . $type);
         } catch ( \Exception $e ) {
             $newToken = false;
