@@ -89,8 +89,4 @@ class Api{
         return $this->token->auth_token($this->authToken);
     }
 
-    protected function request() {
-        
-    }
-
 }

@@ -8,7 +8,7 @@ use Qs\log\Log;
 class Token {
 
     // 用户信息表
-    private $userTable = 'now_users';
+    protected $userTable = 'now_users';
     // 日记实例
     protected $log;
     // redis
@@ -31,7 +31,7 @@ class Token {
      * @param   integer     $time       生成token附加值
      * @return  string                  新的token
      **/
-    private function create_token( $userId, $time = 3600 ){
+    protected function create_token( $userId, $time = 3600 ){
         $token = md5($userId . rand(5, 32) . (time() + $time) );
         if ( $this->is_repeat($token) ) $token = $this->create_token($userId, $time + 1);
         return $token;
@@ -47,7 +47,7 @@ class Token {
      * @param   integer     $time       生成token附加值
      * @return  string                  新的scan_token
      **/
-    private function create_scan ( $userId, $time = 604800 ) {
+    protected function create_scan ( $userId, $time = 604800 ) {
         $scan = md5( $userId . rand(5, 32) . (time() + $time) );
         if ( $this->is_repeat($scan, 'scan_token') ) $data = $this->create_token($userId, $time + 1);
         return $scan;
@@ -94,7 +94,7 @@ class Token {
      * @param   string      $key        字段
      * @return  boolean
      **/
-    private function is_repeat( $string, $key = 'token' ){
+    protected function is_repeat( $string, $key = 'token' ){
         $tmp = $this->redis->has($string);
         if ( $tmp ) return true;
         return false;
