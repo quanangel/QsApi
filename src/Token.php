@@ -6,9 +6,6 @@ use Qs\redis\QsRedis;
 use Qs\log\Log;
 
 class Token {
-
-    // 用户信息表
-    protected $userTable = 'now_users';
     // 日记实例
     protected $log;
     // redis
