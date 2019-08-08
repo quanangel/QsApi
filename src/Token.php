@@ -111,7 +111,7 @@ class Token {
         if ( count($authToken) != 3 ) return false;
         $token = $authToken[0];
         $userId = $authToken[1];
-        if ( 'scan' != $authToken[2] || 'token' != $authToken[2] ) return false;
+        if ( 'scan' != $authToken[2] && 'token' != $authToken[2] ) return false;
         $type = $authToken[2] == 'scan' ? 'scan_token' : $authToken[2];
         $userTmp = $this->redis->get($userId);
         if ($userTmp == $token) return true;
